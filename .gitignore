@@ -1,0 +1,11 @@
+bookmark_app/migrations
+bookmark_app/__pycache__
+bookmark_app/__init__.py
+
+bookmark_manager/__pycache__
+bookmark_manager/__init__.py
+bookmark_manager/settings.py
+bookmark_manager/wsgi.py
+
+
+
