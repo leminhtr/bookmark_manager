@@ -12,6 +12,8 @@ from .models import Bookmark
 def bookmark_list(request):
 	#bookmarks : query public bookmark
 	bookmarks = Bookmark.public.all()
+	if request.GET.get('tag'):
+		bookmarks = bookmarks.filter(tags__name=request.GET['tag'])
 	#store in context dictionary
 	context = {'bookmarks': bookmarks}
 	#generate view
@@ -25,6 +27,8 @@ def bookmark_user(request, username):
 		bookmarks = user.bookmarks.all()
 	else:
 		bookmarks = Bookmark.public.filter(owner__username=username)
+	if request.GET.get('tag'):
+		bookmarks = bookmarks.filter(tag__name = request.GET['tag'])
 	context = {'bookmarks': bookmarks, 'owner': user}
 	return render(request, 'bookmark_app/bookmark_user.html', context)
 
